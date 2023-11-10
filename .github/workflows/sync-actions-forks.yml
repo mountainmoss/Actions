@@ -26,7 +26,7 @@ jobs:
         id: determine-changes
         run: |
           set -x
-          for FORK in ("mountainmoss/setup-ko" "mountainmoss/setup-crane" "mountainmoss/chainguard-dev-actions" "mountainmoss/golangci-lint-action" "mountainmoss/conform-actions" "mountainmoss/chainguard-images-actions" "mountainmoss/terraform-linters-setup-tflint");
+          for FORK in $("mountainmoss/setup-ko" "mountainmoss/setup-crane" "mountainmoss/chainguard-dev-actions" "mountainmoss/golangci-lint-action" "mountainmoss/conform-actions" "mountainmoss/chainguard-images-actions" "mountainmoss/terraform-linters-setup-tflint");
           do
             echo "$FORK"
             BRANCH=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/"$FORK" | jq -rc .default_branch)
