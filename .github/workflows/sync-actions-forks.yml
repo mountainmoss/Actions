@@ -1,4 +1,6 @@
 name: sync actions forks
+permissions:
+  contents: write
 on:
   push:
     branches: sync-forks
