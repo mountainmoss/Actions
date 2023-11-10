@@ -40,3 +40,4 @@ jobs:
             /repos/${FORKS[$FORK]}/merge-upstream \
             -f branch="${BRANCH}"
           done
+        shell: bash
