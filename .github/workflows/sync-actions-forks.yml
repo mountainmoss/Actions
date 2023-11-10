@@ -26,6 +26,8 @@ jobs:
           gh auth status
       - name: determine changes
         id: determine-changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for FORK in "mountainmoss/setup-ko" "mountainmoss/setup-crane" "mountainmoss/chainguard-dev-actions" "mountainmoss/golangci-lint-action" "mountainmoss/conform-actions" "mountainmoss/chainguard-images-actions" "mountainmoss/terraform-linters-setup-tflint";
           do
