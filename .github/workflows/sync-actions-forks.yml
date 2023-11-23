@@ -1,4 +1,5 @@
 name: sync actions forks
+#REQUIRES PAT WITH REPO(READ,WRITE) ORG(READ) WORKFLOWS(WRITE)
 permissions:
   contents: write
 on:
