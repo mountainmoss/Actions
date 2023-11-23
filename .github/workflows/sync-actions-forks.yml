@@ -27,5 +27,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.MOUNTAINMOSSBOT_TOKEN }}
         run: |
-          echo -n "$FORKS" | xargs -I{} -d ',' gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/{} --template '{{.full_name}} {{.default_branch}}{{"\n"}}' | xargs -I{} hack/update-forks.sh {}
+          echo -n "$FORKS" | xargs -I{} -d ',' gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/{} --template '{{.full_name}},{{.default_branch}}{{"\n"}}' | xargs -I{} hack/update-forks.sh {}
         shell: bash
