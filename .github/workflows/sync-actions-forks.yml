@@ -21,7 +21,7 @@ jobs:
       FORKS: "mountainmoss/chainguard-dev-actions,mountainmoss/setup-ko,mountainmoss/setup-crane,mountainmoss/golangci-lint-action,mountainmoss/conform-actions,mountainmoss/chainguard-images-actions,mountainmoss/terraform-linters-setup-tflint"
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
+      - uses: actions/checkout@v4
       - name: sync changes
         id: sync-changes
         env:
