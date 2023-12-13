@@ -10,7 +10,7 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.repository, 'GeoNet/') == false }}
+    if: ${{ startsWith(github.repository, 'mountainmoss/') == false }}
     steps:
     - name: require GeoNet org
       run: |
