@@ -22,7 +22,7 @@ jobs:
       - name: sync changes
         id: sync-changes
         env:
-          GH_TOKEN: ${{ secrets.GH_CI_USER_TOKEN  }}
+          GH_TOKEN: ${{ secrets.MOUNTAINMOSSBOT_TOKEN  }}
         run: |
           gh auth status
           gh repo list geonet --no-archived --fork --json nameWithOwner --jq '.[].nameWithOwner' \
