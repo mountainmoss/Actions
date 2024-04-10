@@ -1,7 +1,6 @@
 name: sync actions forks
 #REQUIRES PAT WITH REPO(READ,WRITE) ORG(READ) WORKFLOWS(WRITE)
-permissions:
-  contents: write
+
 on:
   schedule:
     - cron: 0 1 * * *
@@ -10,7 +9,7 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.repository, 'GeoNet/') == false }}
+    if: ${{ startsWith(github.repository, 'mountainmoss/') == false }}
     steps:
     - name: require GeoNet org
       run: |
@@ -18,13 +17,13 @@ jobs:
   sync-forks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@v4
       - name: sync changes
         id: sync-changes
         env:
-          GH_TOKEN: ${{ secrets.GH_CI_USER_TOKEN  }}
+          GH_TOKEN: ${{ secrets.GH_CI_USER_TOKEN }}
         run: |
-          gh repo list geonet --no-archived --fork --json nameWithOwner --jq '.[].nameWithOwner' \
+          gh repo list mountainmoss --no-archived --fork --json nameWithOwner --jq '.[].nameWithOwner' \
           | xargs -I{} gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/{} --template '{{.full_name}},{{.default_branch}}{{"\n"}}' \
           | xargs -I{} hack/update-forks.sh {}
         shell: bash
